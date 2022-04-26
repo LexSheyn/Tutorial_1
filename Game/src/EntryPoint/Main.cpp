@@ -1,8 +1,20 @@
 #include "../PCH/pch.h"
+#include "../Application/FApplication.h"
 
-int main()
+INT wmain(INT argc, WCHAR** argv)
 {
-	std::cin.get();
+	wce::FApplication Application;
 
-	return 0;
+	try
+	{
+		Application.Run();
+	}
+	catch (const std::exception& Exception)
+	{
+		std::cout << "Exception: " << Exception.what() << std::endl;
+
+		return EXIT_FAILURE;
+	}
+
+	return EXIT_SUCCESS;
 }

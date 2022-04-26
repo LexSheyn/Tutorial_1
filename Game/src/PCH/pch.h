@@ -5,6 +5,8 @@
 
 // C++ STL:
 #include <iostream>
+#include <thread>
+#include <chrono>
 
 // FMOD:
 #include <FMOD/fmod.hpp>
