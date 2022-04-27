@@ -103,11 +103,16 @@
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">pch.h</PrecompiledHeaderFile>
     </ClCompile>
     <ClCompile Include="src\ScreenBuffer\FScreenBuffer.cpp" />
+    <ClCompile Include="src\Screens\IScreen.cpp" />
+    <ClCompile Include="src\Screens\SMenu.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Application\FApplication.h" />
     <ClInclude Include="src\PCH\pch.h" />
     <ClInclude Include="src\ScreenBuffer\FScreenBuffer.h" />
+    <ClInclude Include="src\Screens\EScreen.h" />
+    <ClInclude Include="src\Screens\IScreen.h" />
+    <ClInclude Include="src\Screens\SMenu.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

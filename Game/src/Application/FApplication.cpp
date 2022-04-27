@@ -20,7 +20,7 @@ namespace wce
 
 	void FApplication::Run()
 	{
-		ScreenBuffer.Activate();
+		Menu.Activate();
 
 		while (ShouldClose == false)
 		{
@@ -38,11 +38,7 @@ namespace wce
 
 	void FApplication::Render()
 	{
-		ScreenBuffer.Clear();
-
-		ScreenBuffer.Write(COORD{ 50, 15 }, L"Test text for game!");
-
-		ScreenBuffer.Present();
+		Menu.Render();
 	}
 
 

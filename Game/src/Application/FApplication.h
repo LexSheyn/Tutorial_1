@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../ScreenBuffer/FScreenBuffer.h"
+#include "../Screens/SMenu.h"
 
 namespace wce
 {
@@ -29,8 +29,8 @@ namespace wce
 
 		bool ShouldClose;
 
-		// TEST:
+	// Screens:
 
-		FScreenBuffer ScreenBuffer;
+		SMenu Menu;
 	};
 }
