@@ -15,7 +15,7 @@ namespace wce
 	}
 
 
-// Functions:
+// IScreen Inteface:
 
 	void SMenu::Render()
 	{
@@ -23,7 +23,10 @@ namespace wce
 		{
 			ScreenBuffer.Clear();
 
-			ScreenBuffer.Write(COORD{ 50, 6 }, L"ULTIMATE SUPER GAME");
+			for (auto&[Key, Button] : Buttons)
+			{
+				Button.Draw(ScreenBuffer);
+			}
 
 			ScreenBuffer.Present();
 		}
@@ -38,6 +41,10 @@ namespace wce
 
 	void SMenu::Init()
 	{
+		Buttons[EButton::StartGame].SetPosition(COORD{ 10, 10 }).SetWidth(12).SetText(L"Start game");
+		Buttons[EButton::Memory   ].SetPosition(COORD{ 10, 12 }).SetWidth(12).SetText(L"Memory"    );
+		Buttons[EButton::Settings ].SetPosition(COORD{ 10, 14 }).SetWidth(12).SetText(L"Settings"  );
+		Buttons[EButton::Exit     ].SetPosition(COORD{ 10, 16 }).SetWidth(12).SetText(L"Exit"      );
 	}
 
 

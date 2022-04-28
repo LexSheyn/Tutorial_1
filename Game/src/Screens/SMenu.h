@@ -1,6 +1,8 @@
 #pragma once
 
 #include "IScreen.h"
+#include "../UI/EButton.h"
+#include "../UI/FButton.h"
 
 namespace wce
 {
@@ -26,6 +28,6 @@ namespace wce
 
 	// Components:
 
-		//
+		std::map<EButton, FButton> Buttons;
 	};
 }

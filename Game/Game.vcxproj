@@ -105,6 +105,8 @@
     <ClCompile Include="src\ScreenBuffer\FScreenBuffer.cpp" />
     <ClCompile Include="src\Screens\IScreen.cpp" />
     <ClCompile Include="src\Screens\SMenu.cpp" />
+    <ClCompile Include="src\UI\FButton.cpp" />
+    <ClCompile Include="src\UI\FTextField.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Application\FApplication.h" />
@@ -113,6 +115,9 @@
     <ClInclude Include="src\Screens\EScreen.h" />
     <ClInclude Include="src\Screens\IScreen.h" />
     <ClInclude Include="src\Screens\SMenu.h" />
+    <ClInclude Include="src\UI\EButton.h" />
+    <ClInclude Include="src\UI\FButton.h" />
+    <ClInclude Include="src\UI\FTextFIeld.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
