@@ -23,7 +23,7 @@ namespace wce
 		const WORD&         GetAttribute    () const;
 		const std::wstring& GetText         () const;
 		size_t              GetLength       () const;
-		const bool&         IsEnabled() const;
+		const bool&         IsEnabled       () const;
 
 	// Modifiers:
 
