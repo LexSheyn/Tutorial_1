@@ -9,7 +9,8 @@ namespace wce
 
 	FTextField::FTextField()
 		: Position  (COORD{}),
-		  Attribute (FOREGROUND_GREEN | FOREGROUND_BLUE)
+		  Attribute (FOREGROUND_GREEN | FOREGROUND_BLUE),
+		  Enabled   (true)
 	{
 		Text.reserve(120);
 	}
