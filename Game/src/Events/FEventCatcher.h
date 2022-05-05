@@ -6,18 +6,21 @@ namespace wce
 	{
 	public:
 
-	// Constructors and Destructor
+	// Constructors and Destructor:
 
-		 FEventCatcher    () = delete;
-		~FEventCatcher    () = delete;
+		 FEventCatcher    ();
+		~FEventCatcher    ();
 
 	// Functions:
 
-		static void Initialize     ();
-		static void CatchEvents    ();
-		static void Shutdown       ();
+		void CatchEvents    ();
 
 	private:
+
+	// Private Functions:
+
+		void Initialize    ();
+		void Shutdown      ();
 
 	// Event Process Functions:
 
@@ -27,12 +30,12 @@ namespace wce
 
 	// Variables:
 
-		static HANDLE StdInput;
+		HANDLE StdInput;
 
-		static DWORD ConsoleMode;
-		static DWORD ConsoleModeOld;
+		DWORD ConsoleMode;
+		DWORD ConsoleModeOld;
 
-		static INPUT_RECORD EventData[128];
-		static DWORD        NumRecordsRead;
+		INPUT_RECORD EventData[128];
+		DWORD        NumRecordsRead;
 	};
 }

@@ -3,22 +3,26 @@
 
 namespace wce
 {
-// Functions:
+// Constructors and Destructor:
 
-	void FEventCatcher::Initialize()
+	FEventCatcher::FEventCatcher()
 	{
-		StdInput = GetStdHandle(STD_INPUT_HANDLE);
-
-		GetConsoleMode(StdInput, &ConsoleModeOld);
-
-		SetConsoleMode(StdInput, ENABLE_EXTENDED_FLAGS | ENABLE_WINDOW_INPUT | ENABLE_MOUSE_INPUT);
+		this->Initialize();
 	}
+
+	FEventCatcher::~FEventCatcher()
+	{
+		this->Shutdown();
+	}
+
+
+// Functions:
 
 	void FEventCatcher::CatchEvents()
 	{
 		ReadConsoleInputW(StdInput, EventData, 128, &NumRecordsRead);
 
-		for (DWORD i = 0u; i < NumRecordsRead; i++)
+		for (DWORD i = 0; i < NumRecordsRead; i++)
 		{
 			switch (EventData[i].EventType)
 			{
@@ -39,8 +43,37 @@ namespace wce
 					ResizeEventProc(EventData[i].Event.WindowBufferSizeEvent);
 				}
 				break;
+
+				case MENU_EVENT:
+				{
+					// To do...
+				}
+				break;
+
+				case FOCUS_EVENT:
+				{
+					// To do...
+				}
+				break;
+
+				default:
+				{
+				}
+				break;
 			}
 		}
+	}
+
+
+// Private Functions:
+
+	void FEventCatcher::Initialize()
+	{
+		StdInput = GetStdHandle(STD_INPUT_HANDLE);
+
+		GetConsoleMode(StdInput, &ConsoleModeOld);
+
+		SetConsoleMode(StdInput, ENABLE_EXTENDED_FLAGS | ENABLE_WINDOW_INPUT | ENABLE_MOUSE_INPUT);
 	}
 
 	void FEventCatcher::Shutdown()
@@ -53,13 +86,13 @@ namespace wce
 
 	void __stdcall FEventCatcher::KeyEventProc(KEY_EVENT_RECORD KeyData)
 	{
-		if (KeyData.bKeyDown)
+		if      (KeyData.bKeyDown)
 		{
-			// Key pressed event.
+			//
 		}
-		else if (KeyData.bKeyDown == false)
+		else if (!KeyData.bKeyDown)
 		{
-			// Key released event.
+			//
 		}
 	}
 
@@ -69,19 +102,24 @@ namespace wce
 		{
 			case 0:
 			{
-				// Mouse pressed event.
+				//
 			}
 			break;
 
 			case MOUSE_WHEELED:
 			{
-				// Mouse scrolled event.
+				//
 			}
 			break;
 
 			case MOUSE_MOVED:
 			{
-				// Mouse moved event.
+				//
+			}
+			break;
+
+			default:
+			{
 			}
 			break;
 		}
@@ -89,17 +127,8 @@ namespace wce
 
 	void __stdcall FEventCatcher::ResizeEventProc(WINDOW_BUFFER_SIZE_RECORD WindowBufferData)
 	{
-		// Window resized event.
+		//
 	}
 
-// Static Variables:
-
-	HANDLE FEventCatcher::StdInput = nullptr;
-
-	DWORD FEventCatcher::ConsoleMode    = 0;
-	DWORD FEventCatcher::ConsoleModeOld = 0;
-
-	INPUT_RECORD FEventCatcher::EventData[128];
-	DWORD        FEventCatcher::NumRecordsRead = 0;
 
 }
