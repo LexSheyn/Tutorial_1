@@ -98,6 +98,7 @@
     <ClCompile Include="src\EntryPoint\Main.cpp" />
     <ClCompile Include="src\Events\FEvent.cpp" />
     <ClCompile Include="src\Events\FEventCatcher.cpp" />
+    <ClCompile Include="src\Events\FEventSystem.cpp" />
     <ClCompile Include="src\PCH\pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">pch.h</PrecompiledHeaderFile>
@@ -115,6 +116,8 @@
     <ClInclude Include="src\Events\EEventType.h" />
     <ClInclude Include="src\Events\FEvent.h" />
     <ClInclude Include="src\Events\FEventCatcher.h" />
+    <ClInclude Include="src\Events\FEventSystem.h" />
+    <ClInclude Include="src\Events\IEventListener.h" />
     <ClInclude Include="src\PCH\pch.h" />
     <ClInclude Include="src\ScreenBuffer\FScreenBuffer.h" />
     <ClInclude Include="src\Screens\EScreen.h" />

@@ -13,15 +13,15 @@ namespace wce
 
 	// Constructors and Destructor:
 
-		FEvent(EEventType Type, KEY_EVENT_RECORD          KeyData)          : Type(Type), KeyData          (KeyData)          {}
-		FEvent(EEventType Type, MOUSE_EVENT_RECORD        MouseData)        : Type(Type), MouseData        (MouseData)        {}
-		FEvent(EEventType Type, WINDOW_BUFFER_SIZE_RECORD WindowBufferData) : Type(Type), WindowBufferData (WindowBufferData) {}
+		FEvent    (EEventType Type, KEY_EVENT_RECORD          KeyData)          : Type(Type), KeyData          (KeyData)          {}
+		FEvent    (EEventType Type, MOUSE_EVENT_RECORD        MouseData)        : Type(Type), MouseData        (MouseData)        {}
+		FEvent    (EEventType Type, WINDOW_BUFFER_SIZE_RECORD WindowBufferData) : Type(Type), WindowBufferData (WindowBufferData) {}
 
-		~FEvent() {}
+		~FEvent    () {}
 
 	// Accessors:
 
-		inline const EEventType& GetType() const { return Type; }
+		inline const EEventType& GetType    () const { return Type; }
 
 	// Public Variables:
 
