@@ -29,7 +29,7 @@ namespace wce
 
 	// Private Functions:
 
-		static void Distapch    (FEvent* Event);
+		static void Dispatch    (FEvent* Event);
 
 	// Variables:
 
