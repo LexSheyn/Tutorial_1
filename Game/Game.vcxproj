@@ -110,6 +110,7 @@
     <ClCompile Include="src\Screens\SMenu.cpp" />
     <ClCompile Include="src\UI\FButton.cpp" />
     <ClCompile Include="src\UI\FTextField.cpp" />
+    <ClCompile Include="src\Window\FConsole.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Application\FApplication.h" />
@@ -126,6 +127,7 @@
     <ClInclude Include="src\UI\EButton.h" />
     <ClInclude Include="src\UI\FButton.h" />
     <ClInclude Include="src\UI\FTextFIeld.h" />
+    <ClInclude Include="src\Window\FConsole.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
