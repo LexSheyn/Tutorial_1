@@ -32,6 +32,9 @@ namespace wce
 		this->SetAttribute(ButtonAttributeEnabled);
 
 		Enabled = true;
+
+		FEventSystem::Subscribe(EEventType::MouseMoved  , this);
+		FEventSystem::Subscribe(EEventType::MousePressed, this);
 	}
 
 	void FButton::Disable()
@@ -41,6 +44,9 @@ namespace wce
 		this->SetAttribute(ButtonAttributeDisabled);
 
 		Enabled = false;
+
+		FEventSystem::Unsubscribe(EEventType::MouseMoved  , this);
+		FEventSystem::Unsubscribe(EEventType::MousePressed, this);
 	}
 
 	void FButton::Draw(FScreenBuffer& ScreenBuffer)
@@ -124,6 +130,55 @@ namespace wce
 		static WORD NewId = 0;
 
 		Id = NewId++;
+	}
+
+
+// IEventListener Interface:
+
+	void FButton::OnEvent(const FEvent* const Event)
+	{
+		switch (Event->GetType())
+		{
+			case EEventType::MouseMoved:
+			{
+				this->OnMouseMove(Event);
+			}
+			break;
+
+			case EEventType::MousePressed:
+			{
+				this->OnMousePress(Event);
+			}
+			break;
+		}
+	}
+
+
+// Event Callbacks:
+
+	void FButton::OnMouseMove(const FEvent* const Event)
+	{
+		MousePositionLast = Event->MouseData.dwMousePosition;
+
+		if ( (MousePositionLast.X >= Position.X) && (MousePositionLast.X <= Position.X + Width) && (MousePositionLast.Y == Position.Y) )
+		{
+			this->SetAttribute(ButtonAttributeHovered);
+		}
+		else
+		{
+			this->SetAttribute(ButtonAttributeEnabled);
+		}
+	}
+
+	void FButton::OnMousePress(const FEvent* const Event)
+	{
+		if ((MousePositionLast.X >= Position.X) && (MousePositionLast.X <= Position.X + Width) && (MousePositionLast.Y == Position.Y))
+		{
+			if (Event->MouseData.dwButtonState == FMouseButton::Left)
+			{
+				FEventSystem::PushEvent(FEvent(EEventType::ButtonPressed, FButtonData{ this->GetId(), FMouseButton::Left }));
+			}
+		}
 	}
 
 

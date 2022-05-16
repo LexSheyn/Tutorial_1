@@ -114,11 +114,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Application\FApplication.h" />
+    <ClInclude Include="src\Events\EventData.h" />
     <ClInclude Include="src\Events\EEventType.h" />
     <ClInclude Include="src\Events\FEvent.h" />
     <ClInclude Include="src\Events\FEventCatcher.h" />
     <ClInclude Include="src\Events\FEventSystem.h" />
     <ClInclude Include="src\Events\IEventListener.h" />
+    <ClInclude Include="src\Input\FMouseButton.h" />
     <ClInclude Include="src\PCH\pch.h" />
     <ClInclude Include="src\ScreenBuffer\FScreenBuffer.h" />
     <ClInclude Include="src\Screens\EScreen.h" />

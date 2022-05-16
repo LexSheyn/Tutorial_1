@@ -1,10 +1,12 @@
 #pragma once
 
 #include "FTextField.h"
+#include "../Events/FEventSystem.h"
+#include "../Input/FMouseButton.h"
 
 namespace wce
 {
-	class FButton
+	class FButton : public IEventListener
 	{
 	public:
 
@@ -53,8 +55,23 @@ namespace wce
 		WORD  Attribute;
 		bool  Enabled;
 
+		COORD MousePositionLast;
+
 		static constexpr WORD ButtonAttributeEnabled  = BACKGROUND_GREEN | BACKGROUND_BLUE;
 		static constexpr WORD ButtonAttributeDisabled = 8;
 		static constexpr WORD ButtonAttributeHovered  = BACKGROUND_RED | BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY;
+
+	public:
+
+	// IEventListener Interface:
+
+		void OnEvent    (const FEvent* const Event) override;
+
+	private:
+
+	// Event Callbacks:
+
+		void OnMouseMove     (const FEvent* const Event);
+		void OnMousePress    (const FEvent* const Event);
 	};
 }

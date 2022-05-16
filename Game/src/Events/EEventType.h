@@ -9,6 +9,8 @@ namespace wce
 
 		MousePressed,
 		MouseScrolled,
-		MouseMoved
+		MouseMoved,
+
+		ButtonPressed
 	};
 }
