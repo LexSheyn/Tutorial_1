@@ -9,6 +9,8 @@ namespace wce
 		: ShouldClose(false)
 	{
 		this->Init();
+
+		FEventSystem::PushEvent(FEvent(EEventType::ScreenSwitched, FScreenData{ EScreen::None, EScreen::Menu }));
 	}
 
 	FApplication::~FApplication()
@@ -20,16 +22,23 @@ namespace wce
 
 	void FApplication::Run()
 	{
-		Menu.Activate();
-
-		while (ShouldClose == false)
+		do
 		{
+			this->PollEvents();
+
 			this->Update();
 
 			this->Render();
 
 			std::this_thread::sleep_for(std::chrono::milliseconds(33));
-		}
+
+		} while (ShouldClose == false);
+	}
+
+	void FApplication::PollEvents()
+	{
+		EventCatcher.CatchEvents();
+		FEventSystem::PollEvents();
 	}
 
 	void FApplication::Update()
@@ -46,6 +55,8 @@ namespace wce
 
 	void FApplication::Init()
 	{
+		Console.SetTitle(L"Secret Game!");
+		Console.ArrangeToCenter();
 	}
 
 

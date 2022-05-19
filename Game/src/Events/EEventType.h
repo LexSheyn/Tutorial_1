@@ -11,6 +11,8 @@ namespace wce
 		MouseScrolled,
 		MouseMoved,
 
+		ScreenSwitched,
+
 		ButtonPressed
 	};
 }

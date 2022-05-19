@@ -1,5 +1,7 @@
 #pragma once
 
+#include "FEventSystem.h"
+
 namespace wce
 {
 	class FEventCatcher

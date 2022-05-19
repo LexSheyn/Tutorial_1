@@ -4,6 +4,7 @@ namespace wce
 {
 	enum class EScreen
 	{
+		None,
 		Menu,
 		Game,
 		Memory,

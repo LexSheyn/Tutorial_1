@@ -114,7 +114,7 @@ namespace wce
 
 			case MOUSE_MOVED:
 			{
-				//
+				FEventSystem::PushEvent(FEvent(EEventType::MouseMoved, MouseData));
 			}
 			break;
 

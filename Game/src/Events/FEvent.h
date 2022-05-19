@@ -17,7 +17,9 @@ namespace wce
 		FEvent    (EEventType Type, KEY_EVENT_RECORD          KeyData)          : Type(Type), KeyData          (KeyData)          {}
 		FEvent    (EEventType Type, MOUSE_EVENT_RECORD        MouseData)        : Type(Type), MouseData        (MouseData)        {}
 		FEvent    (EEventType Type, WINDOW_BUFFER_SIZE_RECORD WindowBufferData) : Type(Type), WindowBufferData (WindowBufferData) {}
+		FEvent    (EEventType Type, FScreenData               ScreenData)       : Type(Type), ScreenData       (ScreenData)       {}
 		FEvent    (EEventType Type, FButtonData               ButtonData)       : Type(Type), ButtonData       (ButtonData)       {}
+		
 
 		~FEvent    () {}
 
@@ -32,6 +34,7 @@ namespace wce
 			KEY_EVENT_RECORD          KeyData;
 			MOUSE_EVENT_RECORD        MouseData;
 			WINDOW_BUFFER_SIZE_RECORD WindowBufferData;
+			FScreenData               ScreenData;
 			FButtonData               ButtonData;
 		};
 

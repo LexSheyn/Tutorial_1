@@ -1,8 +1,6 @@
 #pragma once
 
 #include "IScreen.h"
-#include "../UI/EButton.h"
-#include "../UI/FButton.h"
 
 namespace wce
 {
@@ -29,5 +27,17 @@ namespace wce
 	// Components:
 
 		std::map<EButton, FButton> Buttons;
+
+	public:
+
+	// IEventListener Interface:
+
+		void OnEvent    (const FEvent* const Event) override;
+
+	private:
+
+	// Event Callbacks:
+
+		void OnScreenSwitch    (const FEvent* const Event);
 	};
 }

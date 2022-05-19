@@ -2,10 +2,13 @@
 
 #include "EScreen.h"
 #include "../ScreenBuffer/FScreenBuffer.h"
+#include "../UI/EButton.h"
+#include "../UI/FButton.h"
+#include "../Events/FEventSystem.h"
 
 namespace wce
 {
-	class IScreen
+	class IScreen : public IEventListener
 	{
 	public:
 
@@ -39,5 +42,11 @@ namespace wce
 
 		EScreen Name;
 		bool    Activated;
+
+	public:
+
+	// IEventListener Interface:
+
+		virtual void OnEvent    (const FEvent* const Event) override = 0;
 	};
 }
