@@ -100,9 +100,9 @@ namespace wce
 	{
 		switch (MouseData.dwEventFlags)
 		{
-			case 0:
+			case 0: // Mouse button press.
 			{
-				//
+				FEventSystem::PushEvent(FEvent(EEventType::MousePressed, MouseData));
 			}
 			break;
 

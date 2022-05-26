@@ -10,6 +10,7 @@ namespace wce
 		this->Init();
 
 		FEventSystem::Subscribe(EEventType::ScreenSwitched, this);
+		FEventSystem::Subscribe(EEventType::ButtonPressed , this);
 	}
 
 	SMenu::~SMenu()
@@ -62,6 +63,12 @@ namespace wce
 				this->OnScreenSwitch(Event);
 			}
 			break;
+
+			case EEventType::ButtonPressed:
+			{
+				this->OnButtonPress(Event);
+			}
+			break;
 		}
 	}
 
@@ -87,6 +94,14 @@ namespace wce
 			{
 				Button.Disable();
 			}
+		}
+	}
+
+	void SMenu::OnButtonPress(const FEvent* const Event)
+	{
+		if ( (Event->ButtonData.Id == Buttons.at(EButton::Exit).GetId()) && (Event->ButtonData.MouseButton == FMouseButton::Left) )
+		{
+			FEventSystem::PushEvent(FEvent(EEventType::MenuExit));
 		}
 	}
 

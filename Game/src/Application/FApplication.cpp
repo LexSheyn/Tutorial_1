@@ -10,11 +10,15 @@ namespace wce
 	{
 		this->Init();
 
+		FEventSystem::Subscribe(EEventType::ApplicationShutdown, this);
+		FEventSystem::Subscribe(EEventType::MenuExit           , this);
+
 		FEventSystem::PushEvent(FEvent(EEventType::ScreenSwitched, FScreenData{ EScreen::None, EScreen::Menu }));
 	}
 
 	FApplication::~FApplication()
 	{
+		FEventSystem::UnsubscribeFromAll(this);
 	}
 
 
@@ -57,6 +61,40 @@ namespace wce
 	{
 		Console.SetTitle(L"Secret Game!");
 		Console.ArrangeToCenter();
+	}
+
+
+// IEventListener Interface:
+
+	void FApplication::OnEvent(const FEvent* const Event)
+	{
+		switch (Event->GetType())
+		{
+			case EEventType::ApplicationShutdown:
+			{
+				this->OnApplicationShutdown(Event);
+			}
+			break;
+
+			case EEventType::MenuExit:
+			{
+				this->OnMenuExit(Event);
+			}
+			break;
+		}
+	}
+
+
+// Event Callbacks:
+
+	void FApplication::OnApplicationShutdown(const FEvent* const Event)
+	{
+		ShouldClose = true;
+	}
+
+	void FApplication::OnMenuExit(const FEvent* const Event)
+	{
+		FEventSystem::PushEvent({EEventType::ApplicationShutdown});
 	}
 
 

@@ -39,5 +39,6 @@ namespace wce
 	// Event Callbacks:
 
 		void OnScreenSwitch    (const FEvent* const Event);
+		void OnButtonPress     (const FEvent* const Event);
 	};
 }

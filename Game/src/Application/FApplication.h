@@ -7,7 +7,7 @@
 
 namespace wce
 {
-	class FApplication
+	class FApplication : public IEventListener
 	{
 	public:
 
@@ -41,5 +41,14 @@ namespace wce
 	// Screens:
 
 		SMenu Menu;
+
+	// IEventListener Interface:
+
+		void OnEvent    (const FEvent* const Event) override;
+
+	// Event Callbacks:
+
+		void OnApplicationShutdown    (const FEvent* const Event);
+		void OnMenuExit               (const FEvent* const Event);
 	};
 }

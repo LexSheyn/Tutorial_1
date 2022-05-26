@@ -13,6 +13,11 @@ namespace wce
 
 		ScreenSwitched,
 
-		ButtonPressed
+		ButtonPressed,
+
+		MenuExit,
+
+		ApplicationStarted,
+		ApplicationShutdown
 	};
 }
