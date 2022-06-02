@@ -16,13 +16,13 @@ namespace wce
 	}
 
 
-// Functions:
+// Interface:
 
 	void IScreen::Activate()
 	{
-		ScreenBuffer.Activate();
-
 		Activated = true;
+
+		ScreenBuffer.Activate();		
 	}
 
 	void IScreen::Deactivate()

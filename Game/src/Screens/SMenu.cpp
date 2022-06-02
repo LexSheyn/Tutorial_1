@@ -10,7 +10,6 @@ namespace wce
 		this->Init();
 
 		FEventSystem::Subscribe(EEventType::ScreenSwitched, this);
-		FEventSystem::Subscribe(EEventType::ButtonPressed , this);
 	}
 
 	SMenu::~SMenu()
@@ -38,6 +37,30 @@ namespace wce
 
 	void SMenu::Update()
 	{
+	}
+
+	void SMenu::Activate()
+	{
+		IScreen::Activate();
+
+		FEventSystem::Subscribe(EEventType::ButtonPressed, this);
+
+		for (auto& [Key, Button] : Buttons)
+		{
+			Button.Enable();
+		}
+	}
+
+	void SMenu::Deactivate()
+	{
+		IScreen::Deactivate();
+
+		FEventSystem::Unsubscribe(EEventType::ButtonPressed, this);
+
+		for (auto& [Key, Button] : Buttons)
+		{
+			Button.Disable();
+		}
 	}
 
 
@@ -80,26 +103,25 @@ namespace wce
 		if (Event->ScreenData.ToScreen == this->GetName())
 		{
 			this->Activate();
-
-			for (auto& [Key, Button] : Buttons)
-			{
-				Button.Enable();
-			}
 		}
 		else
 		{
-			this->Deactivate();
-
-			for (auto& [Key, Button] : Buttons)
+			if (this->IsActive()) // M
 			{
-				Button.Disable();
+				this->Deactivate();
 			}
 		}
 	}
 
 	void SMenu::OnButtonPress(const FEvent* const Event)
 	{
-		if ( (Event->ButtonData.Id == Buttons.at(EButton::Exit).GetId()) && (Event->ButtonData.MouseButton == FMouseButton::Left) )
+		if ( (Event->ButtonData.Id == Buttons.at(EButton::Settings).GetId()) && (Event->ButtonData.MouseButton == FMouseButton::Left) )
+		{
+			// M
+
+			FEventSystem::PushEvent(FEvent(EEventType::ScreenSwitched, FScreenData{ this->GetName(), EScreen::Settings }));
+		}
+		else if ( (Event->ButtonData.Id == Buttons.at(EButton::Exit).GetId()) && (Event->ButtonData.MouseButton == FMouseButton::Left) )
 		{
 			FEventSystem::PushEvent(FEvent(EEventType::MenuExit));
 		}

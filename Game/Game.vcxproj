@@ -108,7 +108,9 @@
     <ClCompile Include="src\ScreenBuffer\FScreenBuffer.cpp" />
     <ClCompile Include="src\Screens\IScreen.cpp" />
     <ClCompile Include="src\Screens\SMenu.cpp" />
+    <ClCompile Include="src\Screens\SSettings.cpp" />
     <ClCompile Include="src\UI\FButton.cpp" />
+    <ClCompile Include="src\UI\FSlider.cpp" />
     <ClCompile Include="src\UI\FTextField.cpp" />
     <ClCompile Include="src\Window\FConsole.cpp" />
   </ItemGroup>
@@ -120,14 +122,18 @@
     <ClInclude Include="src\Events\FEventCatcher.h" />
     <ClInclude Include="src\Events\FEventSystem.h" />
     <ClInclude Include="src\Events\IEventListener.h" />
+    <ClInclude Include="src\Input\FKey.h" />
     <ClInclude Include="src\Input\FMouseButton.h" />
     <ClInclude Include="src\PCH\pch.h" />
     <ClInclude Include="src\ScreenBuffer\FScreenBuffer.h" />
     <ClInclude Include="src\Screens\EScreen.h" />
+    <ClInclude Include="src\Screens\EScreenField.h" />
     <ClInclude Include="src\Screens\IScreen.h" />
     <ClInclude Include="src\Screens\SMenu.h" />
+    <ClInclude Include="src\Screens\SSettings.h" />
     <ClInclude Include="src\UI\EButton.h" />
     <ClInclude Include="src\UI\FButton.h" />
+    <ClInclude Include="src\UI\FSlider.h" />
     <ClInclude Include="src\UI\FTextFIeld.h" />
     <ClInclude Include="src\Window\FConsole.h" />
   </ItemGroup>

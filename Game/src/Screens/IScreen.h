@@ -1,6 +1,8 @@
 #pragma once
 
 #include "EScreen.h"
+#include "EScreenField.h"
+#include "../Input/FKey.h"
 #include "../ScreenBuffer/FScreenBuffer.h"
 #include "../UI/EButton.h"
 #include "../UI/FButton.h"
@@ -19,13 +21,10 @@ namespace wce
 
 	// Interface:
 
-		virtual void Render    () = 0;
-		virtual void Update    () = 0;
-
-	// Functions:
-
-		void Activate      ();
-		void Deactivate    ();
+		virtual void Render        () = 0;
+		virtual void Update        () = 0;
+		virtual void Activate      ();
+		virtual void Deactivate    ();
 
 	// Accessors:
 

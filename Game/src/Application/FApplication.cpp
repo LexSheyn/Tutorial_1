@@ -51,7 +51,8 @@ namespace wce
 
 	void FApplication::Render()
 	{
-		Menu.Render();
+		Menu    .Render();
+		Settings.Render();
 	}
 
 

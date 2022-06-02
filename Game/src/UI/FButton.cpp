@@ -27,11 +27,11 @@ namespace wce
 
 	void FButton::Enable()
 	{
+		Enabled = true;
+
 		TextField.Enable();
 
-		this->SetAttribute(ButtonAttributeEnabled);
-
-		Enabled = true;
+		this->SetAttribute(ButtonAttributeEnabled);		
 
 		FEventSystem::Subscribe(EEventType::MouseMoved  , this);
 		FEventSystem::Subscribe(EEventType::MousePressed, this);
@@ -39,11 +39,11 @@ namespace wce
 
 	void FButton::Disable()
 	{
+		Enabled = false;
+
 		TextField.Disable();
 
-		this->SetAttribute(ButtonAttributeDisabled);
-
-		Enabled = false;
+		this->SetAttribute(ButtonAttributeDisabled);	
 
 		FEventSystem::Unsubscribe(EEventType::MouseMoved  , this);
 		FEventSystem::Unsubscribe(EEventType::MousePressed, this);

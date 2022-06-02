@@ -24,16 +24,16 @@ namespace wce
 
 	void FTextField::Enable()
 	{
-		this->SetAttribute(TextAttributeEnabled);
-
 		Enabled = true;
+
+		this->SetAttribute(TextAttributeEnabled);		
 	}
 
 	void FTextField::Disable()
 	{
-		this->SetAttribute(TextAttributeDisabled);
-
 		Enabled = false;
+
+		this->SetAttribute(TextAttributeDisabled);		
 	}
 
 	void FTextField::Draw(FScreenBuffer& ScreenBuffer)

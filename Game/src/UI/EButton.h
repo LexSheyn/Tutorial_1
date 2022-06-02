@@ -7,6 +7,7 @@ namespace wce
 		StartGame,
 		Memory,
 		Settings,
-		Exit
+		Exit,
+		Back
 	};
 }

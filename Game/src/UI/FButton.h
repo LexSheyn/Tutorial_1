@@ -61,13 +61,9 @@ namespace wce
 		static constexpr WORD ButtonAttributeDisabled = 8;
 		static constexpr WORD ButtonAttributeHovered  = BACKGROUND_RED | BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY;
 
-	public:
-
 	// IEventListener Interface:
 
 		void OnEvent    (const FEvent* const Event) override;
-
-	private:
 
 	// Event Callbacks:
 

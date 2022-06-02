@@ -4,6 +4,7 @@
 #include "../Events/FEventCatcher.h"
 #include "../Events/FEventSystem.h"
 #include "../Screens/SMenu.h"
+#include "../Screens/SSettings.h"
 
 namespace wce
 {
@@ -40,7 +41,8 @@ namespace wce
 
 	// Screens:
 
-		SMenu Menu;
+		SMenu     Menu;
+		SSettings Settings;
 
 	// IEventListener Interface:
 

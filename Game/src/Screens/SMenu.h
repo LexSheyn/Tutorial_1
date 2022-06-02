@@ -11,12 +11,14 @@ namespace wce
 	// Constructors and Destructor:
 
 		 SMenu    ();
-		~SMenu    ();
+		~SMenu    () override;
 
 	// IScreen Inteface:
 
-		void Render    () override;
-		void Update    () override;
+		void Render        () override;
+		void Update        () override;
+		void Activate      () override;
+		void Deactivate    () override;
 
 	private:
 
@@ -28,13 +30,9 @@ namespace wce
 
 		std::map<EButton, FButton> Buttons;
 
-	public:
-
 	// IEventListener Interface:
 
 		void OnEvent    (const FEvent* const Event) override;
-
-	private:
 
 	// Event Callbacks:
 
