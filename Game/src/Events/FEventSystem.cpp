@@ -27,15 +27,15 @@ namespace wce
 			return;
 		}
 
-		ListenerRegistry.insert({ Type, Listener }); // M
+		ListenerRegistry.insert({ Type, Listener });
 	}
 
 	void FEventSystem::Unsubscribe(EEventType Type, IEventListener* Listener)
 	{
-	//	if (IsSubscribed(Type, Listener) == false)
-	//	{
-	//		return;
-	//	}
+		if (IsSubscribed(Type, Listener) == false)
+		{
+			return;
+		}
 
 		std::pair Range = ListenerRegistry.equal_range(Type);
 
@@ -43,8 +43,7 @@ namespace wce
 		{
 			if (Entry->second == Listener)
 			{
-			//	Entry = ListenerRegistry.erase(Entry);
-				ListenerRegistry.erase(Entry); // M
+				Entry = ListenerRegistry.erase(Entry);
 	
 				return;
 			}

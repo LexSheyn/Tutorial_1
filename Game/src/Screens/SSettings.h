@@ -30,7 +30,7 @@ namespace wce
 
 		std::map<EScreenField, FTextField> TextFields;
 		std::map<EButton     , FButton>    Buttons;
-	//	std::map<EScreenField, FSlider> Sliders;
+		std::map<EScreenField, FSlider>    Sliders;
 
 	// IEventListener Interface:
 

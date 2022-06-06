@@ -106,7 +106,7 @@ namespace wce
 		}
 		else
 		{
-			if (this->IsActive()) // M
+			if (this->IsActive())
 			{
 				this->Deactivate();
 			}
@@ -117,8 +117,6 @@ namespace wce
 	{
 		if ( (Event->ButtonData.Id == Buttons.at(EButton::Settings).GetId()) && (Event->ButtonData.MouseButton == FMouseButton::Left) )
 		{
-			// M
-
 			FEventSystem::PushEvent(FEvent(EEventType::ScreenSwitched, FScreenData{ this->GetName(), EScreen::Settings }));
 		}
 		else if ( (Event->ButtonData.Id == Buttons.at(EButton::Exit).GetId()) && (Event->ButtonData.MouseButton == FMouseButton::Left) )

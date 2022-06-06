@@ -88,11 +88,11 @@ namespace wce
 	{
 		if      (KeyData.bKeyDown)
 		{
-			FEventSystem::PushEvent(FEvent(EEventType::KeyPressed, KeyData)); // M
+			FEventSystem::PushEvent(FEvent(EEventType::KeyPressed, KeyData));
 		}
 		else if (!KeyData.bKeyDown)
 		{
-			FEventSystem::PushEvent(FEvent(EEventType::KeyReleased, KeyData)); // M
+			FEventSystem::PushEvent(FEvent(EEventType::KeyReleased, KeyData));
 		}
 	}
 

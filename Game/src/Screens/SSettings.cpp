@@ -38,7 +38,7 @@ namespace wce
 				Button.Draw(ScreenBuffer);
 			}
 
-			ScreenBuffer.Present(); // M
+			ScreenBuffer.Present();
 		}
 	}
 
@@ -152,7 +152,7 @@ namespace wce
 		}
 		else
 		{
-			if (this->IsActive()) // M
+			if (this->IsActive())
 			{
 				this->Deactivate();
 			}			
@@ -163,8 +163,6 @@ namespace wce
 	{
 		if (Event->ButtonData.Id == Buttons.at(EButton::Back).GetId() && (Event->ButtonData.MouseButton == FMouseButton::Left))
 		{
-			// M
-
 			FEventSystem::PushEvent(FEvent(EEventType::ScreenSwitched, FScreenData{ this->GetName(), EScreen::Menu }));
 		}
 	}
@@ -173,8 +171,6 @@ namespace wce
 	{
 		if (Event->KeyData.wVirtualKeyCode == FKey::Escape)
 		{
-			// M
-
 			FEventSystem::PushEvent(FEvent(EEventType::ScreenSwitched, FScreenData{ this->GetName(), EScreen::Menu }));
 		}
 	}
