@@ -11,11 +11,9 @@ namespace wce
 		: Position  (COORD{}),
 		  Width     (10),
 		  Attribute (ButtonAttributeEnabled),
-		  Enabled   (true)
+		  Enabled   (false)
 	{
 		this->GenerateId();
-
-		this->Enable();
 	}
 
 	FButton::~FButton()

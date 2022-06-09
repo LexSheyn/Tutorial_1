@@ -28,9 +28,8 @@ namespace wce
 
 	// Components:
 
-		std::map<EScreenField, FTextField> TextFields;
-		std::map<EButton     , FButton>    Buttons;
-		std::map<EScreenField, FSlider>    Sliders;
+		std::map<EScreenField, FSlider> Sliders;
+		std::map<EButton     , FButton> Buttons;
 
 	// IEventListener Interface:
 

@@ -10,7 +10,7 @@ namespace wce
 	FTextField::FTextField()
 		: Position  (COORD{}),
 		  Attribute (FOREGROUND_GREEN | FOREGROUND_BLUE),
-		  Enabled   (true)
+		  Enabled   (false)
 	{
 		Text.reserve(120);
 	}

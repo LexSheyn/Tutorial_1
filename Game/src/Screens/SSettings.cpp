@@ -28,9 +28,9 @@ namespace wce
 		{
 			ScreenBuffer.Clear();
 
-			for (auto& [Key, Field] : TextFields)
+			for (auto& [Key, Slider] : Sliders)
 			{
-				Field.Draw(ScreenBuffer);
+				Slider.Draw(ScreenBuffer);
 			}
 
 			for (auto& [Key, Button] : Buttons)
@@ -53,9 +53,9 @@ namespace wce
 		FEventSystem::Subscribe(EEventType::ButtonPressed, this);
 		FEventSystem::Subscribe(EEventType::KeyReleased  , this);
 
-		for (auto& [Key, Field] : TextFields)
+		for (auto& [Key, Slider] : Sliders)
 		{
-			Field.Enable();
+			Slider.Enable();
 		}
 
 		for (auto& [Key, Button] : Buttons)
@@ -71,9 +71,9 @@ namespace wce
 		FEventSystem::Unsubscribe(EEventType::ButtonPressed, this);
 		FEventSystem::Unsubscribe(EEventType::KeyReleased  , this);
 
-		for (auto& [Key, Field] : TextFields)
+		for (auto& [Key, Slider] : Sliders)
 		{
-			Field.Disable();
+			Slider.Disable();
 		}
 
 		for (auto& [Key, Button] : Buttons)
@@ -87,9 +87,9 @@ namespace wce
 
 	void SSettings::Init()
 	{
-		TextFields[EScreenField::FontSize]   .SetPosition(COORD{ 10, 10 }).SetText(L"Font size");
-		TextFields[EScreenField::SoundVolume].SetPosition(COORD{ 10, 12 }).SetText(L"Sound volume");
-		TextFields[EScreenField::MusicVolume].SetPosition(COORD{ 10, 14 }).SetText(L"Music volume");
+		Sliders[EScreenField::FontSize]   .SetPosition(COORD{ 10, 10 }).SetText(L"Font size");
+		Sliders[EScreenField::SoundVolume].SetPosition(COORD{ 10, 12 }).SetText(L"Sound volume");
+		Sliders[EScreenField::MusicVolume].SetPosition(COORD{ 10, 14 }).SetText(L"Music volume");
 
 		Buttons[EButton::Back].SetPosition(COORD{ 10, 16 }).SetWidth(12).SetText(L"Back");
 	}
