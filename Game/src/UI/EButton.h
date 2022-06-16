@@ -8,6 +8,11 @@ namespace wce
 		Memory,
 		Settings,
 		Exit,
-		Back
+		Back,
+
+		Choice_0,
+		Choice_1,
+		Choice_2,
+		Choice_3,
 	};
 }

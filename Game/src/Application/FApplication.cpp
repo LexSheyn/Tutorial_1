@@ -52,6 +52,7 @@ namespace wce
 	void FApplication::Render()
 	{
 		Menu    .Render();
+		Game    .Render();
 		Settings.Render();
 	}
 

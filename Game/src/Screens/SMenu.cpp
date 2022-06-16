@@ -22,17 +22,16 @@ namespace wce
 
 	void SMenu::Render()
 	{
-		if (this->IsActive())
+		if (this->IsActive() == false) { return; }
+
+		ScreenBuffer.Clear();
+
+		for (auto& [Key, Button] : Buttons)
 		{
-			ScreenBuffer.Clear();
-
-			for (auto& [Key, Button] : Buttons)
-			{
-				Button.Draw(ScreenBuffer);
-			}
-
-			ScreenBuffer.Present();
+			Button.Draw(ScreenBuffer);
 		}
+
+		ScreenBuffer.Present();
 	}
 
 	void SMenu::Update()
@@ -115,7 +114,11 @@ namespace wce
 
 	void SMenu::OnButtonPress(const FEvent* const Event)
 	{
-		if ( (Event->ButtonData.Id == Buttons.at(EButton::Settings).GetId()) && (Event->ButtonData.MouseButton == FMouseButton::Left) )
+		if ( (Event->ButtonData.Id == Buttons.at(EButton::StartGame).GetId()) && (Event->ButtonData.MouseButton == FMouseButton::Left) )
+		{
+			FEventSystem::PushEvent(FEvent(EEventType::ScreenSwitched, FScreenData{ this->GetName(), EScreen::Game }));
+		}
+		else if ( (Event->ButtonData.Id == Buttons.at(EButton::Settings).GetId()) && (Event->ButtonData.MouseButton == FMouseButton::Left) )
 		{
 			FEventSystem::PushEvent(FEvent(EEventType::ScreenSwitched, FScreenData{ this->GetName(), EScreen::Settings }));
 		}

@@ -1,11 +1,11 @@
 #include "../PCH/pch.h"
-#include "SSettings.h"
+#include "SGame.h"
 
 namespace wce
 {
 // Constructors and Destructor:
 
-	SSettings::SSettings() : IScreen(EScreen::Settings)
+	SGame::SGame() : IScreen(EScreen::Game)
 	{
 		this->Init();
 
@@ -14,24 +14,24 @@ namespace wce
 		FEventSystem::Subscribe(EEventType::ScreenSwitched     , this);
 	}
 
-	SSettings::~SSettings()
+	SGame::~SGame()
 	{
 		FEventSystem::UnsubscribeFromAll(this);
 	}
 
 
-// IScreen Interface:
+// IScreen Intarface:
 
-	void SSettings::Render()
+	void SGame::Render()
 	{
 		if (this->IsActive() == false) { return; }
 
 		ScreenBuffer.Clear();
 
-		for (auto& [Key, Slider] : Sliders)
-		{
-			Slider.Draw(ScreenBuffer);
-		}
+	//	for (auto& Dialog : Dialogs[Chapter])
+	//	{
+	//
+	//	}
 
 		for (auto& [Key, Button] : Buttons)
 		{
@@ -41,21 +41,16 @@ namespace wce
 		ScreenBuffer.Present();
 	}
 
-	void SSettings::Update()
+	void SGame::Update()
 	{
 	}
 
-	void SSettings::Activate()
+	void SGame::Activate()
 	{
 		IScreen::Activate();
 
 		FEventSystem::Subscribe(EEventType::ButtonPressed, this);
 		FEventSystem::Subscribe(EEventType::KeyReleased  , this);
-
-		for (auto& [Key, Slider] : Sliders)
-		{
-			Slider.Enable();
-		}
 
 		for (auto& [Key, Button] : Buttons)
 		{
@@ -63,17 +58,12 @@ namespace wce
 		}
 	}
 
-	void SSettings::Deactivate()
+	void SGame::Deactivate()
 	{
 		IScreen::Deactivate();
 
 		FEventSystem::Unsubscribe(EEventType::ButtonPressed, this);
 		FEventSystem::Unsubscribe(EEventType::KeyReleased  , this);
-
-		for (auto& [Key, Slider] : Sliders)
-		{
-			Slider.Disable();
-		}
 
 		for (auto& [Key, Button] : Buttons)
 		{
@@ -84,19 +74,20 @@ namespace wce
 
 // Private Functions:
 
-	void SSettings::Init()
+	void SGame::Init()
 	{
-		Sliders[EScreenField::FontSize]   .SetPosition(COORD{ 10, 10 }).SetText(L"Font size");
-		Sliders[EScreenField::SoundVolume].SetPosition(COORD{ 10, 12 }).SetText(L"Sound volume");
-		Sliders[EScreenField::MusicVolume].SetPosition(COORD{ 10, 14 }).SetText(L"Music volume");
+		TextFields[0].SetPosition(COORD{ 10, 5 });
 
-		Buttons[EButton::Back].SetPosition(COORD{ 10, 16 }).SetWidth(12).SetText(L"Back");
+		Buttons[EButton::Choice_0].SetPosition(COORD{ 10, 22 }).SetWidth(30);
+		Buttons[EButton::Choice_1].SetPosition(COORD{ 10, 24 }).SetWidth(30);
+		Buttons[EButton::Choice_2].SetPosition(COORD{ 50, 22 }).SetWidth(30);
+		Buttons[EButton::Choice_3].SetPosition(COORD{ 50, 24 }).SetWidth(30);
 	}
 
 
 // IEventListener Interface:
 
-	void SSettings::OnEvent(const FEvent* const Event)
+	void SGame::OnEvent(const FEvent* const Event)
 	{
 		switch (Event->GetType())
 		{
@@ -135,15 +126,15 @@ namespace wce
 
 // Event Callbacks:
 
-	void SSettings::OnApplicationStart(const FEvent* const Event)
+	void SGame::OnApplicationStart(const FEvent* const Event)
 	{
 	}
 
-	void SSettings::OnApplicationShutdown(const FEvent* const Event)
+	void SGame::OnApplicationShutdown(const FEvent* const Event)
 	{
 	}
 
-	void SSettings::OnScreenSwitch(const FEvent* const Event)
+	void SGame::OnScreenSwitch(const FEvent* const Event)
 	{
 		if (Event->ScreenData.ToScreen == this->GetName())
 		{
@@ -158,15 +149,11 @@ namespace wce
 		}
 	}
 
-	void SSettings::OnButtonPress(const FEvent* const Event)
+	void SGame::OnButtonPress(const FEvent* const Event)
 	{
-		if (Event->ButtonData.Id == Buttons.at(EButton::Back).GetId() && (Event->ButtonData.MouseButton == FMouseButton::Left))
-		{
-			FEventSystem::PushEvent(FEvent(EEventType::ScreenSwitched, FScreenData{ this->GetName(), EScreen::Menu }));
-		}
 	}
 
-	void SSettings::OnKeyRelease(const FEvent* const Event)
+	void SGame::OnKeyRelease(const FEvent* const Event)
 	{
 		if (Event->KeyData.wVirtualKeyCode == FKey::Escape)
 		{

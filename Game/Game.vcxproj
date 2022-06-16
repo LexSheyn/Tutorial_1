@@ -107,6 +107,7 @@
     </ClCompile>
     <ClCompile Include="src\ScreenBuffer\FScreenBuffer.cpp" />
     <ClCompile Include="src\Screens\IScreen.cpp" />
+    <ClCompile Include="src\Screens\SGame.cpp" />
     <ClCompile Include="src\Screens\SMenu.cpp" />
     <ClCompile Include="src\Screens\SSettings.cpp" />
     <ClCompile Include="src\UI\FButton.cpp" />
@@ -116,6 +117,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Application\FApplication.h" />
+    <ClInclude Include="src\Data\FChoice.h" />
     <ClInclude Include="src\Events\EventData.h" />
     <ClInclude Include="src\Events\EEventType.h" />
     <ClInclude Include="src\Events\FEvent.h" />
@@ -129,6 +131,7 @@
     <ClInclude Include="src\Screens\EScreen.h" />
     <ClInclude Include="src\Screens\EScreenField.h" />
     <ClInclude Include="src\Screens\IScreen.h" />
+    <ClInclude Include="src\Screens\SGame.h" />
     <ClInclude Include="src\Screens\SMenu.h" />
     <ClInclude Include="src\Screens\SSettings.h" />
     <ClInclude Include="src\UI\EButton.h" />
